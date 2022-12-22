@@ -1,0 +1,65 @@
+Source: policycoreutils
+Vcs-Git: https://salsa.debian.org/selinux-team/policycoreutils.git
+Vcs-Browser: https://salsa.debian.org/selinux-team/policycoreutils
+Priority: optional
+Section: utils
+Maintainer: Debian SELinux maintainers <selinux-devel@lists.alioth.debian.org>
+Uploaders: Laurent Bigonville <bigon@debian.org>,
+           Russell Coker <russell@coker.com.au>
+Standards-Version: 4.6.0
+Build-Depends: debhelper-compat (= 13),
+               gawk,
+               gettext,
+               libaudit-dev,
+               libcap-ng-dev,
+               libpam0g-dev,
+               libselinux1-dev (>= 3.3),
+               libsemanage-dev (>= 3.3),
+               libsepol-dev (>= 3.3),
+Homepage: https://selinuxproject.org
+# The newrole executable is not installed SETUID in the package,
+# this is done in the postinst script if the capabilities cannot be set.
+# There is no need to have (fake)root during the build.
+Rules-Requires-Root: no
+
+Package: policycoreutils
+Architecture: linux-any
+Depends: lsb-base (>= 3.0-6), selinux-utils, ${misc:Depends}, ${shlibs:Depends}
+Pre-Depends: ${misc:Pre-Depends}
+Description: SELinux core policy utilities
+ Security-enhanced Linux is a patch of the Linux® kernel and a number
+ of utilities with enhanced security functionality designed to add
+ mandatory access controls to Linux.  The Security-enhanced Linux
+ kernel contains new architectural components originally developed to
+ improve the security of the Flask operating system. These
+ architectural components provide general support for the enforcement
+ of many kinds of mandatory access control policies, including those
+ based on the concepts of Type Enforcement®, Role-based Access Control,
+ and Multi-level Security.
+ .
+ This package contains the core policy utilities that are required
+ for basic operation of an SELinux system.  These utilities include
+ load_policy to load policies, setfiles to label filesystems.
+
+Package: newrole
+Architecture: linux-any
+Depends: libcap2-bin,
+         policycoreutils (= ${binary:Version}),
+         ${misc:Depends},
+         ${shlibs:Depends}
+Description: SELinux core policy utilities (newrole application for RBAC/MLS)
+ Security-enhanced Linux is a patch of the Linux® kernel and a number
+ of utilities with enhanced security functionality designed to add
+ mandatory access controls to Linux.  The Security-enhanced Linux
+ kernel contains new architectural components originally developed to
+ improve the security of the Flask operating system. These
+ architectural components provide general support for the enforcement
+ of many kinds of mandatory access control policies, including those
+ based on the concepts of Type Enforcement®, Role-based Access Control,
+ and Multi-level Security.
+ .
+ RBAC/MLS policy machines require newrole as a way of changing the role or
+ level of a logged in user.
+ .
+ This package contains newrole to switch roles, run_init to run /etc/init.d
+ scripts in the proper context.
