@@ -1,8 +1,41 @@
-policycoreutils (3.3-1) UNRELEASED; urgency=medium
+policycoreutils (3.5-2.1) unstable; urgency=medium
 
-  * update
+  * Non-maintainer upload.
+  * Move aliased files from / to /usr (DEP17). Closes: #1073623
 
- -- Debian SELinux maintainers <selinux-devel@lists.alioth.debian.org>  Fri, 29 Apr 2022 14:54:52 +0800
+ -- Michael Biebl <biebl@debian.org>  Thu, 15 Aug 2024 09:00:46 +0200
+
+policycoreutils (3.5-2) unstable; urgency=medium
+
+  * Made fixfiles default to -T0 (threads=cores) Closes: #1042756
+  * Added /usr/libexec/selinux/remove-leaf-dirs for use by policy packages
+
+ -- Russell Coker <russell@coker.com.au>  Thu, 24 Aug 2023 22:26:45 +1000
+
+policycoreutils (3.5-1) unstable; urgency=medium
+
+  * New upstream release
+    - debian/control: Bump build-dependencies to match the new release
+  * debian/upstream/signing-key.asc: Add public key of Jason Zaman
+  * debian/control: Bump Standards-Version to 4.6.2 (no further changes)
+  * debian/control: Drop lsb-base from the dependencies, to please lintian
+  * debian/policycoreutils.lintian-overrides: Fix override
+
+ -- Laurent Bigonville <bigon@debian.org>  Tue, 11 Jul 2023 08:02:41 +0200
+
+policycoreutils (3.4-1) unstable; urgency=medium
+
+  [ Christian Göttsche ]
+  * d/newrole.postinst: drop usage of which
+  * d/policycoreutils.postrm: remove /.autorelabel on purge
+
+  [ Laurent Bigonville ]
+  * New upstream release
+    - debian/control: Bump build-dependencies to match the new release
+    - debian/patches/fixfiles-remove-extras: Refreshed
+  * Enable GPG key validation of the upstream tarball
+
+ -- Laurent Bigonville <bigon@debian.org>  Sun, 05 Jun 2022 01:02:59 +0200
 
 policycoreutils (3.3-1) unstable; urgency=medium
 

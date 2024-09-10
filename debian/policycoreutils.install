@@ -1,17 +1,18 @@
-debian/local/selinux-autorelabel lib/systemd/
-debian/local/selinux-autorelabel-generator.sh lib/systemd/system-generators
+debian/local/selinux-autorelabel usr/lib/systemd/
+debian/local/selinux-autorelabel-generator.sh usr/lib/systemd/system-generators
+debian/remove-leaf-dirs usr/libexec/selinux/
 etc/sestatus.conf
-usr/sbin/fixfiles sbin/
-usr/sbin/load_policy sbin/
-sbin/restorecon
-sbin/restorecon_xattr
-sbin/setfiles
 usr/bin/secon
 usr/bin/sestatus
 usr/libexec/selinux/hll
+usr/sbin/fixfiles
 usr/sbin/genhomedircon
 usr/sbin/genhomedircon
+usr/sbin/load_policy
+usr/sbin/restorecon
+usr/sbin/restorecon_xattr
 usr/sbin/semodule
+usr/sbin/setfiles
 usr/sbin/sestatus
 usr/sbin/setsebool
 usr/share/bash-completion/completions/setsebool
